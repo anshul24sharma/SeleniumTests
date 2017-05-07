@@ -14,7 +14,11 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import test.common.commonMethods;
+
 public class SeleniumTest6 {
+	
+	commonMethods cmethods = new commonMethods();
 	
 	By draggable = By.xpath("//div[@id = 'draggableview']");
 	By droppable = By.xpath("//div[@id = 'droppableview']");
@@ -26,11 +30,9 @@ public class SeleniumTest6 {
 	@Test
 	public void javaScriptTest() throws InterruptedException {
 
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\optimus120\\Desktop\\ANSHUL Desktop\\Selanium\\chrome driver\\chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
+		WebDriver driver = cmethods.StartBrowser();
 		Actions act = new Actions(driver);
-		// maximize browser
-				//driver.manage().window().maximize();
+		
 
 				//Navigating to demoqa site
 				driver.navigate().to("http://demoqa.com/droppable/");

@@ -9,7 +9,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import test.common.commonMethods;
+
 public class SeleniumTest4 {	
+	
+	commonMethods cmethods = new commonMethods();
 	@Test
 	public void javaScriptTest() {
 
@@ -23,10 +27,7 @@ public class SeleniumTest4 {
 //		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 //		WebDriver driver = new ChromeDriver(capabilities);
 		
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\optimus120\\Desktop\\ANSHUL Desktop\\Selanium\\chrome driver\\chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-
-		//driver.manage().window().maximize();
+		WebDriver driver = cmethods.StartBrowser();
 		driver.get("http://www.optimusinfo.com/contact-us/");
 
 

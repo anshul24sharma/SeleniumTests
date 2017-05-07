@@ -20,7 +20,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
+import test.common.commonMethods;
+
 public class SeleniumTest7 implements Runnable{
+	
+	commonMethods cmethods = new commonMethods();
 	
 	Thread t=new Thread();
     t.start();

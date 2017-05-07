@@ -28,7 +28,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-
+import test.common.commonMethods;
 
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
@@ -55,6 +55,8 @@ import org.apache.log4j.SimpleLayout;
 
 public class SeleniumTest5 {
 	
+	commonMethods cmethods = new commonMethods();
+	
 	int i=0;
 
 	//Junit Test
@@ -66,12 +68,10 @@ public class SeleniumTest5 {
 		
 		
 		log.info("starting Test");
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\optimus120\\Desktop\\ANSHUL Desktop\\Selanium\\chrome driver\\chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
+		WebDriver driver = cmethods.StartBrowser();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
-		// Maximizing webdriver window.
-	//	driver.manage().window().maximize();
+		
 		
 		// Defining Explicit wait.
 		WebDriverWait wait = new WebDriverWait(driver, 120);

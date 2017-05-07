@@ -20,19 +20,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
+import test.common.commonMethods;
+
 public class SeleniumTest3 {
 
+	commonMethods cmethods = new commonMethods();
 	//Junit Test
 	@org.junit.Test	
 	public void test1() throws InterruptedException, IOException {
 		
 				
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\optimus120\\Desktop\\ANSHUL Desktop\\Selanium\\chrome driver\\chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
+		WebDriver driver = cmethods.StartBrowser();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		
-		// Maximizing webdriver window.
-		//driver.manage().window().maximize();
+
 		
 		// Defining Explicit wait.
 		WebDriverWait wait = new WebDriverWait(driver, 30);

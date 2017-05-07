@@ -41,54 +41,37 @@ public class SeleniumTest2 {
 	public void test1() throws InterruptedException, IOException, AWTException {
 		
 		WebDriver driver = cmethods.StartBrowser();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 				
 		// Defining Explicit wait.
 		WebDriverWait wait = new WebDriverWait(driver, 120);
 		
-		// Question. 1
-		
+		//******************** Question. 1
 		//Navigating to destined Url.
-		cmethods.navigateToSite(driver,cmethods.readValueFromConfigProperties("demoqa_url"));
-		
-		
+		String demoqa= cmethods.readValueFromConfigProperties("demoqa_url");
+		cmethods.navigateToSite(driver,demoqa);
 		//drag and drop
 		Actions act = new Actions(driver);
 		WebElement Source = driver.findElement(By.xpath("//p[text()='Drag me around']"));
 		act.dragAndDropBy(Source, 130, 120).perform();
 		
-		// Question. 2
-		driver.get("http://www.toolsqa.com/automation-practice-switch-windows/");
-		
+		//****************** Question. 2
+		String toolsqa= cmethods.readValueFromConfigProperties("toolsqa_url");
+		cmethods.navigateToSite(driver,toolsqa);
+		// Defining parent driver.
 		String winHandleBefore = driver.getWindowHandle();
-		//driver.get("http://demoqa.com/draggable/");
-				
 		driver.findElement(By.id("button1")).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//img[@class = ' preload-me']")));
-		
+		// Switching to child window.
 		for (String winHandle : driver.getWindowHandles())
-		{
-			   // Switch to child window
 			   driver.switchTo().window(winHandle);
-		}
-		
-		String winHandleAfter = driver.getWindowHandle();
-		
 		driver.getPageSource().contains("QA Automation Tools Tutorial");
-		
-		
-		
-		
 		// to close the child window.
 		driver.close();
-
 		// to switch to parent window.
 		driver.switchTo().window(winHandleBefore);
-		Thread.sleep(4000);
 		driver.findElement(By.xpath("//h2[text()='1) Browser Windows']")).click();
-		Thread.sleep(7000);
 		
-		//Question 3
+		//***************Question 3
 		//JavascriptExecutor jse = (JavascriptExecutor)driver;
 //		jse.executeScript("window.scrollBy(0,250)", "");
 		
@@ -98,7 +81,6 @@ public class SeleniumTest2 {
 		Thread.sleep(7000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("timingAlert")));
 		driver.findElement(By.id("timingAlert")).click();
-		
 		// Get a handle to the open alert, prompt or confirmation
 		Thread.sleep(10000);
 		Alert alert = driver.switchTo().alert();
@@ -107,7 +89,7 @@ public class SeleniumTest2 {
 		// And acknowledge the alert (equivalent to clicking "OK")
 		alert.accept();
 		
-		//Question 4 
+		//***************Question 4 
 		driver.get("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_select");
 		Thread.sleep(2000);
 		
@@ -119,15 +101,16 @@ public class SeleniumTest2 {
 		Assert.assertEquals(volvoOption, "Volvo");
 		driver.switchTo().defaultContent();
 		
-		//Question 5
+		//***************Question 5
 		driver.navigate().to("http://www.optimusinfo.com/contact-us/");
-		
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		WebElement message_box = driver.findElement(By.id("avia_message_1"));
 		message_box.sendKeys("123456789");		
 		String enteredTextMessage = (String) ((JavascriptExecutor) driver).executeScript("return arguments[0].value;",message_box);	
 		System.out.println("Entered Text Message is " + enteredTextMessage);
 		System.out.println("length of entered message is : " + enteredTextMessage.length());
+		
+		driver.close();
 		
 	}
 

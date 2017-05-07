@@ -39,7 +39,6 @@ public class SeleniumTest1 {
 		WebDriverWait wait = new WebDriverWait(driver, 120);
 		
 		//Navigating to destined Url.
-		cmethds.
 		driver.get("https://www.freecharge.in/");
 		
 		//Verifying all the brands
